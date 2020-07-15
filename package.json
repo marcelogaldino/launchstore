@@ -1,0 +1,46 @@
+{
+  "name": "launchstore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelogaldino/launchstore.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Marcelo Galdino",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/marcelogaldino/launchstore/issues"
+  },
+  "homepage": "https://github.com/marcelogaldino/launchstore#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "cz-conventional-changelog": "^3.2.0",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "nunjucks": "^3.2.1"
+  }
+}

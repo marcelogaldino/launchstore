@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: #fd951f;
-    --secondary-color: #1fd4fd;
+    --secondary-color: #1f83fd;
 }
 
 * {
@@ -160,6 +160,22 @@ form .item select {
     border-radius: 4px;
 }
 
+form .item textarea {
+    height: 150px;
+}
+
+form .item span {
+    padding: 8px 16px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 16px;
+    margin: 8px 4px 0 0;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
 form .item select {
     /* permitir estilizacao no select */
     -moz-appearance: none;
@@ -173,4 +189,93 @@ form .item select {
     background-repeat: no-repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
+}
+
+.button.edit {
+    background: var(--secondary-color);
+}
+
+.button.delete {
+    background: lightgray;
+}
+
+.button.edit:hover {
+    background: #065ac1;
+}
+
+.button.delete:hover {
+    background: rgb(233, 62, 62);
+}
+
+/* PHOTOS */
+
+form .item #photos-upload {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 200px;
+}
+
+form .item #photos-upload p {
+    padding: 8px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px -6px #333;
+    background: var(--secondary-color);
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+form .item #photos-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+form .item #photos-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+form .item #photos-preview img {
+    width: 100%;
+    height: 150px;
+
+    object-fit: cover;
+}
+
+form .item #photos-preview .photo {
+    position: relative;
+}
+
+form .item #photos-preview .photo i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    color: rgb(233, 62, 62);
+    width: 100%;
+    height: 100%;
+    font-size: 500%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: 300ms;
+}
+
+form .item #photos-preview .photo:hover i {
+    opacity: 1;
 }

@@ -4,10 +4,10 @@
 
     <section class="container form">
 
-        <form action="/products">
+        <form action="/products" method="POST" enctype="multipart/form-data">
 
             <div class="header">
-                <h3>Cadastrar produto</h3>
+                <h3>Cadastrar produto {{ productID.id }}</h3>
             </div>
 
             <div class="fields">
@@ -15,10 +15,11 @@
             </div>
 
 
-        <button class="button" type="submit">Salvar</button>
+            <button class="button" type="submit">Salvar</button>
 
         </form>
 
     </section>
 
+    <script src="/script.js"></script>
 {% endblock %}

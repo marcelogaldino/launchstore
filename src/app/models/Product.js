@@ -1,4 +1,5 @@
 const db = require('../../config/db')
+const { date } = require('../../lib/utils')
 
 module.exports = {
     create(data) {
@@ -11,8 +12,9 @@ module.exports = {
                 old_price,
                 price,
                 quantity,
-                status
-            ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8 )
+                status,
+                created_at
+            ) VALUES ( $1, $2, $3, $4, $5, $6, $7, $8, $9 )
             RETURNING id
         `
         
@@ -26,7 +28,8 @@ module.exports = {
             data.old_price || data.price,
             data.price,
             data.quantity,
-            data.status || 1
+            data.status || 1,
+            date(Date.now()).iso
         ]
 
         return db.query(query, values)
@@ -46,8 +49,9 @@ module.exports = {
                 old_price = ($5),
                 price = ($6),
                 quantity = ($7),
-                status = ($8)
-            WHERE id = $9
+                status = ($8),
+                updated_at = ($9)
+            WHERE id = $10
         `
         
         const values = [
@@ -59,6 +63,7 @@ module.exports = {
             data.price,
             data.quantity,
             data.status,
+            date(Date.now()).iso,
             data.id
         ]
 
@@ -68,6 +73,7 @@ module.exports = {
     delete(id) {
         return db.query(`DELETE FROM products WHERE id = $1`, [id])
     },
+    
     files(id) {
         return db.query(`
             SELECT * FROM files WHERE product_id = $1

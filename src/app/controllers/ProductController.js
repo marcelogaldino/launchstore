@@ -58,7 +58,13 @@ module.exports = {
         product.old_price = formatPrice(product.old_price)
         product.price = formatPrice(product.price)
 
-        return res.render('products/show', { product })
+        let file = await Product.files(product.id)
+        const files = file.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace('public', '')}`
+        }))
+
+        return res.render('products/show', { product, files })
     },
 
     async edit(req, res) {
